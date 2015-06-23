@@ -302,6 +302,7 @@
                     $optionActive   = $sodOptions.filter(".active"),
                     $sodFilterHit, $optionNext, $optionCycle;
 
+                
                 // Highlight prev/next element if up/down key pressed
                 if ( e.which > 36 && e.which < 41 ) {
 
@@ -309,10 +310,16 @@
                     if ( e.which === 37 || e.which === 38 ) { // Left/Up key
                         $optionNext  = $optionActive.prevAll(":not('.disabled, .optgroup')").first();
                         $optionCycle = $sodOptions.not(".disabled, .optgroup").last();
+                        if ( !$sod.hasClass("open") ) {
+                           $optionNext.click();
+                        }
                     }
                     else if ( e.which === 39 || e.which === 40 ) { // Right/Down key
                         $optionNext  = $optionActive.nextAll(":not('.disabled, .optgroup')").first();
                         $optionCycle = $sodOptions.not(".disabled, .optgroup").first();
+                        if ( !$sod.hasClass("open") ) {
+                           $optionNext.click();
+                        }
                     }
 
                     // If there's no option before/after and cycle is enabled
